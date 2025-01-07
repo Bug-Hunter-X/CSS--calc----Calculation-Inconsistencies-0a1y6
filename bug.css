@@ -1,0 +1,19 @@
+The CSS property `calc()` is used to perform calculations, but it can sometimes produce unexpected results when used with percentages or other relative units. For example, consider the following code:
+
+```css
+.element {
+  width: calc(50% - 10px);
+}
+```
+
+If the parent element's width is 200px, you might expect the element to have a width of 90px (100px - 10px). However, the actual width might differ slightly due to rounding errors or how browsers interpret the calculation.
+
+Another issue arises when using `calc()` with multiple units.  The calculation order must be carefully considered. For example:
+
+```css
+.element {
+  width: calc(100px + 50%);
+}
+```
+
+This adds 100px to 50% of the parent's width.  The order of operations is crucial. If the parent is 200px wide, the result is 200px (100px + 100px). However, unexpected results can happen if the parent's width changes dynamically.
